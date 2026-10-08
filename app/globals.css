@@ -113,3 +113,17 @@ footer>a:not(.footerBrand){border-bottom:1px solid #bca794;padding-bottom:5px}
  .shopInfo h3{font-size:24px}
 }
 @media(max-width:390px){.navLinks{gap:7px}.navLinks a{font-size:6px}.shopCard{gap:12px;padding:13px}.sizeMark{flex-basis:72px}}
+
+.navLinks a{font-size:10px;letter-spacing:.17em}
+.productCard{display:block;padding:12px;background:#fbf8f3;border:1px solid #ddcfc1}
+.productImage{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;background:#eee5da}
+.productCard .shopInfo{padding:18px 8px 8px}
+.sizeToggle{width:100%;display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding:13px 0;border:0;border-top:1px solid #d8cbbd;background:transparent;color:#73513d;font:500 10px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.sizeToggle span{font-size:20px}
+.sizeOptions{border-top:1px solid #e0d5c9;padding-top:5px}
+.sizeOption{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #e6ddd3}
+.sizeOption div{display:flex;flex-direction:column;gap:4px}
+.sizeOption b{font:500 16px 'Cormorant Garamond',serif;color:var(--brown-dark)}
+.sizeOption small{font-size:9px;color:#82766b}
+.sizeOption strong{font:500 17px 'Cormorant Garamond',serif;color:var(--brown-dark);white-space:nowrap}
+@media(min-width:761px){.shopGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.productImage{aspect-ratio:1/1}}
