@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Ivory Ink | Timeless Calligraphy",
-  description: "A refined collection of gold calligraphy and contemporary Islamic art.",
+  description: "A refined studio of contemporary Islamic calligraphy, thoughtful design and timeless art.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
