@@ -14,6 +14,7 @@
         --warm: #e4c6a1;
         --cream: #f8f1e8;
         --stone: #e6d7c3;
+        --gold: #d4af37;
         --rust: #9a6a4a;
         --shadow: rgba(15, 11, 8, 0.82);
       }
@@ -639,6 +640,57 @@
           grid-column: auto;
         }
       }
+
+      /* Ivory Ink signature orbit hero */
+      :root { --gold: #d4af37; --brown: #d8b66a; --cream: #fff9ee; }
+      .hero {
+        min-height: 100vh;
+        padding: 110px 20px 58px;
+        background:
+          radial-gradient(ellipse at 50% 48%, rgba(197,151,62,.16), transparent 34%),
+          radial-gradient(circle at 18% 80%, rgba(140,98,70,.16), transparent 28%),
+          linear-gradient(135deg,#080706 0%,#17100b 52%,#090807 100%);
+      }
+      .hero::before { content: "خط"; color: rgba(212,175,55,.045); }
+      .hero-content { width: 100%; max-width: 1100px; margin: 0 auto; gap: 24px; }
+      .orbit-stage { position: relative; display: grid; place-items: center; width: min(78vw, 680px); aspect-ratio: 1; margin: 0 auto 12px; }
+      .orbit-ring { position: absolute; border: 1px solid rgba(212,175,55,.36); border-radius: 50%; pointer-events: none; }
+      .orbit-ring-one { inset: 7%; }
+      .orbit-ring-two { inset: 16%; border-style: dashed; border-color: rgba(212,175,55,.25); animation: ringTurn 42s linear infinite; }
+      .orbit-ring-three { inset: 25%; border-color: rgba(255,245,220,.12); }
+      .hero-brand { position: relative; z-index: 3; width: 66%; text-align: center; padding: 25px 10px; }
+      .hero-kicker { display: block; color: #e8d4a0; font: 600 10px/1.5 Arial,sans-serif; letter-spacing: .26em; margin-bottom: 16px; }
+      .hero-brand h1 { margin: 0; color: #f0d27b; font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(48px, 8.5vw, 100px); font-weight: 500; line-height: .88; letter-spacing: -.045em; text-shadow: 0 3px 0 rgba(75,48,10,.8), 0 0 26px rgba(212,175,55,.19); }
+      .hero-brand h1 em { display: inline-block; color: #d4af37; font-family: 'Parisienne', cursive; font-weight: 400; font-size: 1.02em; }
+      .hero-brand-line { display: block; width: 72px; height: 1px; margin: 20px auto 14px; background: linear-gradient(90deg,transparent,#e5c66b,transparent); }
+      .hero-brand p { margin: 0; color: rgba(255,249,238,.72); font-size: clamp(8px,1.2vw,11px); letter-spacing: .15em; line-height: 1.8; }
+      .orbit-art { position: absolute; z-index: 2; width: clamp(82px, 15vw, 142px); aspect-ratio: 1; padding: 5px; border: 1px solid rgba(226,191,93,.86); border-radius: 50%; background: #15100a; box-shadow: 0 10px 30px rgba(0,0,0,.5), 0 0 20px rgba(212,175,55,.12); animation: floatArt 5s ease-in-out infinite; }
+      .orbit-art img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+      .art-one { top: 2%; left: calc(50% - clamp(41px,7.5vw,71px)); animation-delay: -.5s; }
+      .art-two { top: 25%; right: 1%; animation-delay: -1.5s; }
+      .art-three { right: 12%; bottom: 7%; animation-delay: -2.5s; }
+      .art-four { left: 12%; bottom: 7%; animation-delay: -3.5s; }
+      .art-five { top: 25%; left: 1%; animation-delay: -4.5s; }
+      @keyframes floatArt { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-9px) rotate(2deg); } }
+      @keyframes ringTurn { to { transform: rotate(360deg); } }
+      .hero .button { gap: 14px; border-radius: 2px; color: #17100a; background: linear-gradient(135deg,#f1d988,#bd9131); border-color: #e4c76b; }
+      .section-title { color: var(--gold); }
+      @media (max-width: 600px) {
+        .hero { min-height: 88vh; padding: 100px 12px 42px; }
+        .orbit-stage { width: min(94vw, 500px); }
+        .orbit-art { width: clamp(66px, 19vw, 96px); padding: 3px; }
+        .art-one { top: 2%; }
+        .art-two { right: 0; top: 27%; }
+        .art-three { right: 8%; bottom: 8%; }
+        .art-four { left: 8%; bottom: 8%; }
+        .art-five { left: 0; top: 27%; }
+        .hero-brand { width: 72%; }
+        .hero-brand p { letter-spacing: .08em; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .orbit-ring-two, .orbit-art { animation: none; }
+      }
+
     </style>
   </head>
   <body>
@@ -661,12 +713,23 @@
     <main>
       <header class="hero">
         <div class="hero-content">
-          <h1 class="hero-wordmark">
-            <small>Fine Art Studio</small>
-            <span class="hero-main"><span class="hero-script">Ivory Ink Co.</span></span>
-            <span class="hero-sub">Minimalist Marks</span>
-          </h1>
-          <a class="button" href="#gallery">Explore Collections</a>
+          <div class="orbit-stage" aria-label="Ivory Ink gold calligraphy collection">
+            <div class="orbit-ring orbit-ring-one"></div>
+            <div class="orbit-ring orbit-ring-two"></div>
+            <div class="orbit-ring orbit-ring-three"></div>
+            <div class="orbit-art art-one"><img src="public/calligraphy/divine-gold.svg" alt="Gold Allah calligraphy artwork"></div>
+            <div class="orbit-art art-two"><img src="public/calligraphy/muhammad.svg" alt="Muhammad calligraphy artwork"></div>
+            <div class="orbit-art art-three"><img src="public/calligraphy/noor.svg" alt="Noor calligraphy artwork"></div>
+            <div class="orbit-art art-four"><img src="public/calligraphy/bismillah.svg" alt="Bismillah calligraphy artwork"></div>
+            <div class="orbit-art art-five"><img src="public/calligraphy/alhamdulillah.svg" alt="Alhamdulillah calligraphy artwork"></div>
+            <div class="hero-brand">
+              <span class="hero-kicker">F I N E&nbsp; A R T&nbsp; S T U D I O</span>
+              <h1>Ivory <em>Ink</em></h1>
+              <span class="hero-brand-line"></span>
+              <p>MINIMALIST MARKS · TIMELESS CALLIGRAPHY</p>
+            </div>
+          </div>
+          <a class="button" href="#gallery">Explore Collections <span aria-hidden="true">↗</span></a>
         </div>
       </header>
 
