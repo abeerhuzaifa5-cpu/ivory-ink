@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ivory Ink Co. Preview</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Parisienne&display=swap');
+
+      :root {
+        --black: #0a0908;
+        --ink: #17120e;
+        --brown: #caa57d;
+        --warm: #e4c6a1;
+        --cream: #f8f1e8;
+        --stone: #e6d7c3;
+        --rust: #9a6a4a;
+        --shadow: rgba(15, 11, 8, 0.82);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--cream);
+        background: var(--black);
+        font-family: Inter, Arial, sans-serif;
+      }
+
+      .nav {
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 6vw;
+        background: rgba(12, 10, 9, 0.78);
+        border-bottom: 1px solid rgba(202, 165, 125, 0.26);
+        backdrop-filter: blur(14px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--brown);
+        white-space: nowrap;
+      }
+
+      .brand-mark {
+        display: inline-flex;
+        width: 42px;
+        height: 42px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(202, 165, 125, 0.8);
+        border-radius: 10px;
+        background: linear-gradient(135deg, rgba(202, 165, 125, 0.18), rgba(255, 255, 255, 0.02));
+        color: var(--brown);
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        box-shadow: inset 0 0 22px rgba(202, 165, 125, 0.08);
+      }
+
+      .brand-lockup {
+        display: flex;
+        flex-direction: column;
+        line-height: 0.9;
+      }
+
+      .brand-wordmark {
+        display: inline-block;
+        color: var(--cream);
+        font-family: 'Parisienne', cursive;
+        font-size: clamp(24px, 2.1vw, 38px);
+        line-height: 0.9;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+      }
+
+      .brand-script {
+        display: inline;
+        color: var(--cream);
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        font-weight: inherit;
+        letter-spacing: inherit;
+      }
+
+      .brand-subtitle {
+        display: block;
+        margin-top: 6px;
+        color: var(--brown);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+      }
+
+      .links {
+        display: flex;
+        gap: 24px;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .links a {
+        color: var(--cream);
+        text-decoration: none;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 92vh;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        padding: 120px 24px 70px;
+        background:
+          radial-gradient(circle at 50% 18%, rgba(220, 187, 146, 0.18), transparent 20%),
+          radial-gradient(circle at 20% 80%, rgba(140, 98, 70, 0.18), transparent 28%),
+          radial-gradient(circle at 80% 30%, rgba(255, 238, 219, 0.07), transparent 20%),
+          linear-gradient(135deg, #070707 0%, #120d09 24%, #1a120d 52%, #0d0b09 100%);
+      }
+
+      .hero::before {
+        content: "خط";
+        position: absolute;
+        inset: auto auto 4vh 6vw;
+        color: rgba(202, 165, 125, 0.06);
+        font-family: Georgia, serif;
+        font-size: clamp(180px, 34vw, 500px);
+        line-height: 0.8;
+        filter: blur(0.2px);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: -10%;
+        z-index: 0;
+        opacity: 0.34;
+        background-image:
+          linear-gradient(rgba(12, 10, 9, 0.54), rgba(12, 10, 9, 0.66)),
+          url('public/images/gallery/calligraphy-arch.webp');
+        background-position: center;
+        background-size: cover;
+        filter: blur(10px) saturate(1.18) brightness(0.8);
+        transform: scale(1.08);
+        animation: heroCalligraphyDrift 15s ease-in-out infinite alternate;
+      }
+
+      @keyframes heroCalligraphyDrift {
+        0% { transform: scale(1.08) translate3d(-1%, -1%, 0); }
+        100% { transform: scale(1.18) translate3d(1.5%, 1%, 0); }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 940px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -24px;
+      }
+
+      h1 {
+        margin: 0 0 18px;
+        color: var(--brown);
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        line-height: 0.9;
+        text-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero-wordmark small {
+        display: block;
+        margin-bottom: 26px;
+        color: var(--stone);
+        font-family: Inter, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        transform: translateY(-10px);
+        text-align: center;
+      }
+
+      .hero-wordmark {
+        transform: translateY(-22px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-main {
+        display: inline-flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 0;
+        flex-wrap: nowrap;
+        margin: 0 auto;
+        white-space: nowrap;
+      }
+
+      .hero-script {
+        display: inline-block;
+        color: var(--cream);
+        font-family: 'Parisienne', cursive;
+        font-size: clamp(94px, 11.5vw, 210px);
+        line-height: 0.72;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        transform: translateY(2px);
+      }
+
+      .hero-co {
+        display: inline-block;
+        color: var(--brown);
+        font-family: 'Parisienne', cursive;
+        font-size: clamp(24px, 2.8vw, 52px);
+        line-height: 1;
+        letter-spacing: 0.02em;
+        margin-left: 0.08em;
+        margin-bottom: 0.86rem;
+      }
+
+      .hero-sub {
+        display: block;
+        margin-top: 38px;
+        color: rgba(202, 165, 125, 0.96);
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(24px, 2.4vw, 42px);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 600;
+        transform: translateY(26px);
+        opacity: 0.96;
+      }
+
+      .subtitle {
+        margin: 0 auto 34px;
+        max-width: 700px;
+        color: rgba(248, 241, 232, 0.82);
+        font-size: clamp(17px, 2vw, 24px);
+        letter-spacing: 1px;
+        line-height: 1.6;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        min-height: 58px;
+        padding: 0 34px;
+        border: 1px solid rgba(202, 165, 125, 0.8);
+        border-radius: 0;
+        color: var(--black);
+        background: linear-gradient(180deg, #d9ba8d 0%, #caa57d 100%);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-decoration: none;
+        text-transform: uppercase;
+        box-shadow: 0 18px 30px rgba(202, 165, 125, 0.10);
+        margin-top: 12px;
+      }
+
+      section {
+        padding: 82px 6vw;
+      }
+
+      .section-title {
+        margin: 0 0 28px;
+        color: var(--gold);
+        font-family: Georgia, serif;
+        font-size: clamp(34px, 5vw, 64px);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .art {
+        min-height: 280px;
+        padding: 22px;
+        border: 1px solid rgba(212, 175, 55, 0.26);
+        background:
+          linear-gradient(145deg, rgba(245, 241, 232, 0.08), rgba(255, 255, 255, 0.02)),
+          var(--ink);
+      }
+
+      .glyph {
+        display: grid;
+        min-height: 170px;
+        place-items: center;
+        margin-bottom: 20px;
+        color: var(--gold);
+        background:
+          radial-gradient(circle, rgba(212, 175, 55, 0.18), transparent 58%),
+          linear-gradient(145deg, rgba(124, 31, 42, 0.28), rgba(23, 63, 53, 0.25));
+        font-family: Georgia, serif;
+        font-size: 82px;
+      }
+
+      .art h3 {
+        margin: 0 0 10px;
+        color: white;
+        font-family: Georgia, serif;
+        font-size: 24px;
+      }
+
+      .art p {
+        margin: 0;
+        color: rgba(245, 241, 232, 0.78);
+        line-height: 1.6;
+      }
+
+      #gallery .art {
+        padding: 14px;
+        border-color: rgba(212, 175, 55, 0.42);
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+        transition: transform 240ms ease, border-color 240ms ease;
+      }
+
+      #gallery .art:hover {
+        transform: translateY(-8px);
+        border-color: var(--gold);
+      }
+
+      #gallery .glyph {
+        min-height: 300px;
+        margin-bottom: 16px;
+        overflow: hidden;
+        background: #0a0a0a;
+      }
+
+      #gallery .glyph img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transition: transform 500ms ease;
+      }
+
+      #gallery .art:hover .glyph img {
+        transform: scale(1.06);
+      }
+
+      .band {
+        background: linear-gradient(90deg, #0b0b0b, #15110a, #071c18);
+      }
+
+      .collections {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .collections p,
+      .shop p {
+        max-width: 720px;
+        color: rgba(245, 241, 232, 0.8);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .collection-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 34px;
+      }
+
+      .collection-card {
+        position: relative;
+        min-height: 300px;
+        overflow: hidden;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        background: var(--ink);
+      }
+
+      .collection-card img {
+        width: 100%;
+        height: 300px;
+        display: block;
+        object-fit: cover;
+        transition: transform 500ms ease;
+      }
+
+      .collection-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.08) 68%);
+      }
+
+      .collection-card:hover img {
+        transform: scale(1.08);
+      }
+
+      .collection-copy {
+        position: absolute;
+        z-index: 1;
+        right: 18px;
+        bottom: 16px;
+        left: 18px;
+      }
+
+      .collection-copy h3 {
+        margin: 0 0 5px;
+        color: var(--gold);
+        font-family: Georgia, serif;
+        font-size: 23px;
+      }
+
+      .collection-copy p {
+        margin: 0;
+        color: var(--cream);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .price-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .price {
+        padding: 22px;
+        border: 1px solid rgba(212, 175, 55, 0.24);
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .price img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        margin-bottom: 16px;
+        border: 1px solid rgba(212, 175, 55, 0.28);
+      }
+
+      .price strong {
+        display: block;
+        margin-top: 10px;
+        color: var(--gold);
+        font-size: 24px;
+      }
+
+      .price-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 12px;
+      }
+
+      .price-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .price-original {
+        color: rgba(245, 241, 232, 0.55);
+        font-size: 14px;
+        text-decoration: line-through;
+        text-decoration-thickness: 1.5px;
+      }
+
+      .price-sale {
+        color: var(--gold);
+        font-size: 29px;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+      }
+
+      .discount-badge {
+        display: inline-block;
+        padding: 6px 10px;
+        background: rgba(212, 175, 55, 0.14);
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        color: var(--gold);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        box-shadow: 0 0 18px rgba(212, 175, 55, 0.18);
+      }
+
+      .price-meta::before {
+        content: "";
+        display: block;
+        width: 48px;
+        height: 1px;
+        background: rgba(212, 175, 55, 0.45);
+        margin-bottom: 8px;
+      }
+
+      .order-section {
+        background: linear-gradient(135deg, #071c18, #0b0b0b 54%, #17110a);
+      }
+
+      .order-layout {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .order-note,
+      .order-form {
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        background: rgba(5, 5, 5, 0.6);
+        padding: 28px;
+      }
+
+      .order-note h3 {
+        margin: 0 0 16px;
+        color: var(--gold);
+        font-family: Georgia, serif;
+        font-size: 30px;
+      }
+
+      .order-note p,
+      .order-note li {
+        color: rgba(245, 241, 232, 0.82);
+        line-height: 1.7;
+      }
+
+      .order-note ul {
+        margin: 20px 0 0;
+        padding-left: 20px;
+      }
+
+      .order-form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .order-form label {
+        display: grid;
+        gap: 7px;
+        color: var(--cream);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      .order-form .full {
+        grid-column: 1 / -1;
+      }
+
+      .order-form input,
+      .order-form select,
+      .order-form textarea {
+        width: 100%;
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        padding: 13px 14px;
+        color: white;
+        background: rgba(255, 255, 255, 0.04);
+        font: inherit;
+        outline: none;
+      }
+
+      .order-form input:focus,
+      .order-form select:focus,
+      .order-form textarea:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+      }
+
+      .order-form select option {
+        color: white;
+        background: #111;
+      }
+
+      .order-form textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      .order-submit {
+        border: 0;
+        cursor: pointer;
+      }
+
+      .order-status {
+        display: none;
+        grid-column: 1 / -1;
+        margin: 0;
+        padding: 13px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        color: var(--cream);
+        background: rgba(212, 175, 55, 0.12);
+      }
+
+      .order-status.visible {
+        display: block;
+      }
+
+      footer {
+        padding: 36px 6vw;
+        border-top: 1px solid rgba(212, 175, 55, 0.22);
+        color: rgba(245, 241, 232, 0.7);
+      }
+
+      @media (max-width: 800px) {
+        .links {
+          display: none;
+        }
+
+        .grid,
+        .collections,
+        .price-row,
+        .collection-grid,
+        .order-layout,
+        .order-form {
+          grid-template-columns: 1fr;
+        }
+
+        .order-form .full {
+          grid-column: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="brand">
+        <span class="brand-mark" aria-label="Ivory Ink Co. monogram">II</span>
+        <div class="brand-lockup">
+          <span class="brand-wordmark">Ivory Ink Co.</span>
+          <span class="brand-subtitle">Minimalist Marks</span>
+        </div>
+      </div>
+      <div class="links">
+        <a href="#gallery">Gallery</a>
+        <a href="#collections">Collections</a>
+        <a href="#shop">Shop</a>
+        <a href="https://wa.me/923294408631" target="_blank" rel="noopener">Order WhatsApp</a>
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero">
+        <div class="hero-content">
+          <h1 class="hero-wordmark">
+            <small>Fine Art Studio</small>
+            <span class="hero-main"><span class="hero-script">Ivory Ink Co.</span></span>
+            <span class="hero-sub">Minimalist Marks</span>
+          </h1>
+          <a class="button" href="#gallery">Explore Collections</a>
+        </div>
+      </header>
+
+      <section id="gallery">
+        <h2 class="section-title">Gallery</h2>
+        <div class="grid">
+          <article class="art">
+            <div class="glyph">الله</div>
+            <h3>Divine Gold</h3>
+            <p>Layered gold strokes on a deep black field, made for a calm luxury interior.</p>
+          </article>
+          <article class="art">
+            <div class="glyph">حب</div>
+            <h3>Love Script</h3>
+            <p>Soft Urdu and Arabic inspired curves with warm highlights and hand-finished detail.</p>
+          </article>
+          <article class="art">
+            <div class="glyph">نور</div>
+            <h3>Noor Series</h3>
+            <p>A luminous composition designed around balance, symmetry, and quiet movement.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="collections" class="band">
+        <div class="collections">
+          <div>
+            <h2 class="section-title">Collections</h2>
+            <p>Premium calligraphy collections for homes, offices, wedding gifts, and spiritual spaces. Each piece can be customized by size, color, text, and frame style.</p>
+          </div>
+          <div class="art">
+            <div class="glyph">بسم الله</div>
+            <h3>Signature Commission</h3>
+            <p>Custom words, names, duas, verses, and personal phrases.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="shop" class="shop">
+        <h2 class="section-title">Shop</h2>
+        <p>Available calligraphy canvases. Select a piece for pricing and custom size details.</p>
+        <div class="price-row" id="canvas-products"></div>
+      </section>
+    </main>
+
+    <footer>
+      Ivory Ink Co. Preview. Open this file directly while the Next.js dependency repair finishes.
+    </footer>
+    <script>
+      const products = [
+        ['Round Blue Allah Calligraphy Canvas', 3000],
+        ['Color Splash Arabic Calligraphy Canvas', 5000],
+        ['Hasbunallah Black Gold Canvas', 4800],
+        ['Kun Fayakun Blue Texture Canvas', 3800],
+        ['Three Piece Alhamdulillah Canvas Set', 9500],
+        ['La Hawla Round Floral Canvas', 5500],
+        ['Alhamdulillah Gradient Canvas', 3500],
+        ['Kaaba Islamic Calligraphy Canvas', 8000],
+        ['Sunset Round Silhouette Canvas', 4200],
+        ['Surah Falaq And Nas Calligraphy Canvas', 6500],
+        ['Mini Names Of Allah Canvas Set', 6000],
+        ['Al-Kausar Color Block Canvas', 6800],
+        ['Fa Inna Maal Usri Yusra Canvas', 5800],
+      ];
+
+      const formatPrice = (amount) => `PKR ${Number(amount).toLocaleString('en-PK')}`;
+      const discountedPrice = (amount) => Math.round(amount * 0.5);
+      const store = document.getElementById('canvas-products');
+      products.forEach(([name, originalPrice], index) => {
+        const number = index + 1;
+        const padded = String(number).padStart(2, '0');
+        const offerPrice = discountedPrice(originalPrice);
+        store.insertAdjacentHTML('beforeend', `
+          <article class="price">
+            <img src="public/images/products/calligraphy-canvas-${padded}.jpeg" alt="Calligraphy canvas ${number}" />
+            ${name}
+            <div class="price-meta">
+              <span class="discount-badge">50% Off</span>
+              <div class="price-tag">
+                <span class="price-original">${formatPrice(originalPrice)}</span>
+                <strong class="price-sale">${formatPrice(offerPrice)}</strong>
+              </div>
+            </div>
+          </article>
+        `);
+      });
+
+      const featuredGallery = [
+        ['public/images/gallery/calligraphy-arch.webp', 'Gold Calligraphy Arch'],
+        ['public/images/gallery/thuluth-script.webp', 'Gold Thuluth Calligraphy'],
+        ['public/images/gallery/gold-arabic-art.jpg', 'Luxury Arabic Calligraphy'],
+      ];
+      document.querySelectorAll('#gallery .glyph').forEach((tile, index) => {
+        const [image, title] = featuredGallery[index];
+        tile.innerHTML = `<img src="${image}" alt="${title}" />`;
+      });
+
+      const collections = [
+        ['calligraphy-canvas-01.jpeg', 'Divine Circle', 'Elegant round compositions with a contemporary spiritual feel.'],
+        ['calligraphy-canvas-02.jpeg', 'Modern Colour', 'Bold colour, expressive lettering, and a modern gallery mood.'],
+        ['calligraphy-canvas-03.jpeg', 'Black & Gold', 'Luxury black-and-gold calligraphy for statement interiors.'],
+        ['calligraphy-canvas-04.jpeg', 'Blue Serenity', 'Cool blue textures with beautifully balanced Arabic script.'],
+        ['calligraphy-canvas-05.jpeg', 'Triptych Collection', 'Three-piece artworks created for large feature walls.'],
+        ['calligraphy-canvas-06.jpeg', 'Floral Script', 'Soft floral details surrounding flowing calligraphic forms.'],
+        ['calligraphy-canvas-08.jpeg', 'Sacred Spaces', 'Islamic artwork designed for prayer rooms and peaceful homes.'],
+        ['calligraphy-canvas-12.jpeg', 'Colour Block Series', 'Fresh graphic compositions with modern colour contrast.'],
+      ];
+      const collectionGrid = document.createElement('div');
+      collectionGrid.className = 'collection-grid';
+      collectionGrid.innerHTML = collections.map(([image, title, description]) => `
+        <article class="collection-card">
+          <img src="public/images/products/${image}" alt="${title}" />
+          <div class="collection-copy">
+            <h3>${title}</h3>
+            <p>${description}</p>
+          </div>
+        </article>
+      `).join('');
+      document.getElementById('collections').appendChild(collectionGrid);
+
+      const orderSection = document.createElement('section');
+      orderSection.id = 'order';
+      orderSection.className = 'order-section';
+      orderSection.innerHTML = `
+        <div class="order-layout">
+          <div class="order-note">
+            <h2 class="section-title">Place Your Order</h2>
+            <h3>Custom art, made for your space.</h3>
+            <p>Choose an artwork or request a made-to-order calligraphy piece. Our team will confirm the price, delivery time and payment details on WhatsApp.</p>
+            <a class="button" href="https://wa.me/923294408631" target="_blank" rel="noopener">Order on WhatsApp</a>
+            <ul>
+              <li>Custom names, duas, verses and poetry</li>
+              <li>Canvas sizes and frame options available</li>
+              <li>Secure delivery across Pakistan</li>
+            </ul>
+          </div>
+          <form class="order-form" id="order-form">
+            <label>Full Name<input required name="name" placeholder="Your full name" /></label>
+            <label>Phone / WhatsApp<input required type="tel" name="phone" placeholder="03XX XXXXXXX" /></label>
+            <label class="full">Email Address<input required type="email" name="email" placeholder="you@example.com" /></label>
+            <label>Artwork<select required name="artwork" id="order-artwork"><option value="">Select an artwork</option></select></label>
+            <label>Canvas Size<select required name="size"><option>12 x 16 inches</option><option>16 x 20 inches</option><option>18 x 24 inches</option><option>Custom size</option></select></label>
+            <label class="full">Delivery Address<textarea required name="address" placeholder="House / street, area, city"></textarea></label>
+            <label class="full">Special Instructions<textarea name="notes" placeholder="Frame colour, custom text, gift wrapping, or any other request"></textarea></label>
+            <button class="button order-submit full" type="submit">Send Order Request</button>
+            <p class="order-status" id="order-status"></p>
+          </form>
+        </div>
+      `;
+      document.querySelector('main').appendChild(orderSection);
+
+      const artworkSelect = document.getElementById('order-artwork');
+      products.forEach(([name, price]) => {
+        artworkSelect.insertAdjacentHTML('beforeend', `<option value="${name}">${name} — ${price}</option>`);
+      });
+      document.getElementById('order-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const data = new FormData(form);
+        const message = [
+          '*New Ivory Ink Co. Order Request*',
+          '',
+          `*Name:* ${data.get('name')}`,
+          `*Phone:* ${data.get('phone')}`,
+          `*Email:* ${data.get('email')}`,
+          `*Artwork:* ${data.get('artwork')}`,
+          `*Canvas Size:* ${data.get('size')}`,
+          `*Address:* ${data.get('address')}`,
+          `*Special Instructions:* ${data.get('notes') || 'None'}`,
+        ].join('\n');
+        window.location.href = `https://wa.me/923294408631?text=${encodeURIComponent(message)}`;
+      });
+    </script>
+  </body>
+</html>
